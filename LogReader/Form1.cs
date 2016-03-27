@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -38,12 +39,20 @@ namespace LogReader
             dataGridView1.Columns[1].Name = "Type";
             dataGridView1.Columns[1].DataPropertyName = "DisplayType";
 
-            BindingSource bs = new BindingSource();
-            if (Properties.Settings.Default.ReaderData == null)
+            List<ReaderData> readerDataList = new List<ReaderData>();
+            if(Properties.Settings.Default.ReaderData != null)
             {
-                Properties.Settings.Default.ReaderData = new List<ReaderData>();
+                foreach (string readerDataString in Properties.Settings.Default.ReaderData)
+                {
+                    string[] splited = readerDataString.Split(',');
+                    string characterName = splited[0];
+                    string type = splited[1];
+                    readerDataList.Add(new ReaderData(characterName, int.Parse(type)));
+                }
             }
-            bs.DataSource = Properties.Settings.Default.ReaderData;
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = readerDataList;
             dataGridView1.DataSource = bs;
         }
 
@@ -117,18 +126,46 @@ namespace LogReader
             if (!exists)
             {
                 ((BindingSource)dataGridView1.DataSource).Add(new ReaderData(textBox1.Text, (int)comboBox1.SelectedValue));
-                Properties.Settings.Default.ReaderData = (List<ReaderData>)((BindingSource)dataGridView1.DataSource).DataSource;
-                Properties.Settings.Default.Save();
+                saveSettings();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            List<ReaderData> readerDataList = (List<ReaderData>)((BindingSource)dataGridView1.DataSource).DataSource;
             List<string> deleteCharacterNameList = new List<string>();
-            foreach(DataGridViewCell cell in dataGridView1.SelectedCells)
+            foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
             {
-                
+                if (!deleteCharacterNameList.Contains(readerDataList[cell.RowIndex].CharacterName))
+                {
+                    deleteCharacterNameList.Add(readerDataList[cell.RowIndex].CharacterName);
+                }
             }
+
+            foreach(string deleteCharacterName in deleteCharacterNameList)
+            {
+                foreach(ReaderData readerData in (BindingSource)dataGridView1.DataSource)
+                {
+                    if (deleteCharacterName.Equals(readerData.CharacterName))
+                    {
+                        ((BindingSource)dataGridView1.DataSource).Remove(readerData);
+                        break;
+                    }
+                }
+            }
+
+            saveSettings();
+        }
+
+        private void saveSettings()
+        {
+            StringCollection stringCollection = new StringCollection();
+            foreach (ReaderData readerData in (List<ReaderData>)((BindingSource)dataGridView1.DataSource).DataSource)
+            {
+                stringCollection.Add(readerData.CharacterName + "," + readerData.Type.ToString());
+            }
+            Properties.Settings.Default.ReaderData = stringCollection;
+            Properties.Settings.Default.Save();
         }
     }
 }

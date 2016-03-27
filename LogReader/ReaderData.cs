@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FNF.Utility;
+using System.Xml.Serialization;
 
 namespace LogReader
 {
@@ -42,6 +43,10 @@ namespace LogReader
             {
                 return Enum.GetName(typeof(VoiceType), type);
             }
+        }
+
+        public ReaderData()
+        {
         }
 
         public ReaderData(string characterName, int type)

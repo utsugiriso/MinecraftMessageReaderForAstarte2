@@ -25,9 +25,9 @@ namespace LogReader.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<ReaderData> ReaderData {
+        public global::System.Collections.Specialized.StringCollection ReaderData {
             get {
-                return ((global::System.Collections.Generic.List<ReaderData>)(this["ReaderData"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["ReaderData"]));
             }
             set {
                 this["ReaderData"] = value;
