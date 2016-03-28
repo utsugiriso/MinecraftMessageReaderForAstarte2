@@ -10,8 +10,14 @@ namespace LogReader
 {
     class ReaderData
     {
+        public const int TONE_DEFAULT = 100;
+        public const int SPEED_DEFAULT = 100;
+        public const int VOLUME_DEFAULT = 100;
+
         private string characterName;
-        private int type = 0;
+        private VoiceType voiceType = VoiceType.Default;
+        private int tone;
+        private int volume;
 
         public string CharacterName
         {
@@ -25,34 +31,93 @@ namespace LogReader
             }
         }
 
-        public int Type
+        public int Tone
         {
             get
             {
-                return type;
+                return tone;
             }
             set
             {
-                type = value;
+                tone = value;
             }
         }
 
-        public string DisplayType
+        public int Volume
         {
             get
             {
-                return Enum.GetName(typeof(VoiceType), type);
+                return volume;
+            }
+            set
+            {
+                volume = value;
             }
         }
 
-        public ReaderData()
+        public VoiceType VoiceType
         {
+            get
+            {
+                return voiceType;
+            }
+            set
+            {
+                voiceType = value;
+            }
         }
 
-        public ReaderData(string characterName, int type)
+        public int NumberVoiceType
+        {
+            get
+            {
+                return (int)voiceType;
+            }
+            set
+            {
+                voiceType = (VoiceType)Enum.ToObject(typeof(VoiceType), value);
+            }
+        }
+
+        public string DisplayVoiceType
+        {
+            get
+            {
+                return Enum.GetName(typeof(VoiceType), voiceType);
+            }
+            set
+            {
+                voiceType = (VoiceType)Enum.Parse(typeof(VoiceType), value);
+            }
+        }
+
+        public ReaderData(string characterName)
         {
             this.CharacterName = characterName;
-            this.Type = type;
+            this.VoiceType = VoiceType.Default;
+            this.Tone = TONE_DEFAULT;
+            this.Volume = VOLUME_DEFAULT;
+        }
+
+        public ReaderData(string characterName, VoiceType voiceType, int tone)
+        {
+            this.CharacterName = characterName;
+            this.VoiceType = voiceType;
+            this.Tone = tone;
+            this.Volume = VOLUME_DEFAULT;
+        }
+
+        public ReaderData(string characterName, VoiceType voiceType, int tone, int volume)
+        {
+            this.CharacterName = characterName;
+            this.VoiceType = voiceType;
+            this.Tone = tone;
+            this.Volume = volume;
+        }
+
+        public int GetAdjustedSpeed()
+        {
+            return SPEED_DEFAULT - (Tone - TONE_DEFAULT);
         }
     }
 }

@@ -26,8 +26,17 @@ namespace FNF.Utility {
         /// 利用後にはDispose()で開放してください。
         /// </summary>
         public BouyomiChanClient() {
-            ClientChannel = new IpcClientChannel("hogehoge", null); //チャンネル名は何でもいい
-            ChannelServices.RegisterChannel(ClientChannel, false);
+            string channelName = "minecraft log reader";
+            if (ChannelServices.GetChannel(channelName) == null)
+            {
+                ClientChannel = new IpcClientChannel(channelName, null);
+                ChannelServices.RegisterChannel(ClientChannel, false);
+            }
+            else
+            {
+                ClientChannel = (IpcClientChannel)ChannelServices.GetChannel(channelName);
+            }
+
             RemotingObject = (BouyomiChanRemoting)Activator.GetObject(typeof(BouyomiChanRemoting), "ipc://BouyomiChan/Remoting");
         }
 

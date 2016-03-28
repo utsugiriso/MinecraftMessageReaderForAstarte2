@@ -33,5 +33,17 @@ namespace LogReader.Properties {
                 this["ReaderData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultReaderData {
+            get {
+                return ((string)(this["DefaultReaderData"]));
+            }
+            set {
+                this["DefaultReaderData"] = value;
+            }
+        }
     }
 }
