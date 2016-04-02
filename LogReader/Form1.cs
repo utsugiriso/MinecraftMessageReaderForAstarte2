@@ -188,9 +188,9 @@ namespace LogReader
         private void addTalkTask(string message, ReaderData readerData)
         {
             if(readerData == null)
-                bc.AddTalkTask(message, ReaderData.SPEED_DEFAULT, ReaderData.TONE_DEFAULT, -1, VoiceType.Default);
+                bc.AddTalkTask(message, ReaderData.SPEED_DEFAULT, ReaderData.TONE_DEFAULT, decimal.ToInt32(numericUpDown5.Value), VoiceType.Default);
             else
-                bc.AddTalkTask(message, readerData.GetAdjustedSpeed(), readerData.Tone, readerData.Volume, readerData.VoiceType);
+                bc.AddTalkTask(message, readerData.GetAdjustedSpeed(), readerData.Tone, readerData.Volume * decimal.ToInt32(numericUpDown5.Value) / 100, readerData.VoiceType);
         }
 
         private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)

@@ -48,12 +48,15 @@ namespace LogReader
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.SuspendLayout();
             // 
             // fileSystemWatcher1
@@ -141,7 +144,7 @@ namespace LogReader
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 169);
+            this.label1.Location = new System.Drawing.Point(52, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 12);
             this.label1.TabIndex = 8;
@@ -150,14 +153,14 @@ namespace LogReader
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(13, 184);
+            this.comboBox2.Location = new System.Drawing.Point(13, 204);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(120, 20);
             this.comboBox2.TabIndex = 9;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(54, 210);
+            this.numericUpDown2.Location = new System.Drawing.Point(54, 230);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(79, 19);
             this.numericUpDown2.TabIndex = 10;
@@ -170,7 +173,7 @@ namespace LogReader
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(54, 235);
+            this.numericUpDown3.Location = new System.Drawing.Point(54, 255);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(79, 19);
             this.numericUpDown3.TabIndex = 11;
@@ -206,7 +209,7 @@ namespace LogReader
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 212);
+            this.label3.Location = new System.Drawing.Point(12, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 12);
             this.label3.TabIndex = 14;
@@ -224,15 +227,39 @@ namespace LogReader
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 237);
+            this.label5.Location = new System.Drawing.Point(5, 257);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 12);
             this.label5.TabIndex = 16;
             this.label5.Text = "Volume";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 301);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 12);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Master";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(54, 299);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(79, 19);
+            this.numericUpDown5.TabIndex = 17;
+            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown5.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numericUpDown5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -257,6 +284,7 @@ namespace LogReader
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,6 +310,8 @@ namespace LogReader
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
