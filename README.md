@@ -1,3 +1,5 @@
+Fiction77氏が作ったMinecraft配布マップ[Astarte2](http://www.nicovideo.jp/watch/sm27626803)で遊ぼう！
+
 # MinecraftMessageReaderForAstarte2
 Minecraftの配布マップ「Astarte2」(と言わずMinecraft)の[CHAT]メッセージを棒読みちゃんで読み上げるWindowsアプリ
 
